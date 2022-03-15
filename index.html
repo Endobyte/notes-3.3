@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="parent">
+        <input type="text" id="text1" />
+        <button id="button1">BUTTON</button>
+    </div>
+    <script>
+        console.log('Hello console! - line 13');
+
+        const inputElement = document.getElementById('text1');
+        const buttonElement = document.getElementById('button1');
+        const parentElement = document.getElementById('parent');
+
+        inputElement.addEventListener('change', function(e) { // On changing the value and pressing out
+            console.log(`The value you entered is ${e.target.value}`);
+        });
+        inputElement.addEventListener('input', function(e) { // On changing the value
+            console.log(`The value you just typed is ${e.target.value}`);
+        });
+        buttonElement.addEventListener('click', function(e) { // On click
+           console.log('You clicked on my button!');
+           e.stopPropagation(); // Stops the "parent containing div" messages for the button
+        });
+        parentElement.addEventListener('click', function(e) {
+            console.log('You clicked on the parent containing div.');
+        });
+        buttonElement.addEventListener('mouseover', function(e) { // On mouseover
+            console.log('Your mouse is on the button.');
+        });
+        buttonElement.addEventListener('mouseout', function(e) { // On leaving mouseover
+            console.log('Your mouse is no longer on the button.');
+        });
+        inputElement.addEventListener('focus', function(e) { // On clicking/focusing on the element
+            console.log('You focused on the input!');
+        });
+        inputElement.addEventListener('blur', function(e) { //On clicking away from/blurring the element
+            console.log('You stopped focusing on the input!');
+        });
+        document.addEventListener('keydown', function(e) { //On hitting a key
+            console.log(`You just hit the ${e.key} key`);
+        });
+    </script>
+</body>
+</html>
