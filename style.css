@@ -1,0 +1,9 @@
+#button2:hover {
+    background-color: aqua;
+}
+#button3 {
+    opacity: 0.25;
+}
+#button3:hover {
+    opacity: 1;
+}

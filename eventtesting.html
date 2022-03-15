@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Testing</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="button">
+        <button id="button2">Hover over me and I'll turn aqua!</button>
+        <br>
+        <button id="button3">Hover over me and I'll become clear!</button>
+        <br>
+        <input id="input2" type="text">
+    </div>
+    <br><a href="index.html">Back to Homepage</a>
+    <script>
+        const button2 = document.getElementById('button2');
+        const input2 = document.getElementById('input2');
+
+        button2.addEventListener('mouseover', function(e) {
+            console.log('User is mousing over the aqua button.');
+        });
+        button2.addEventListener('mouseout', function(e) {
+            console.log('User has stopped mousing over the aqua button.');
+        });
+        input2.addEventListener('focus', function(e) {
+            console.log('User has clicked on the input.');
+        });
+        input2.addEventListener('blur', function(e) {
+            console.log('User has clicked away from the input.');
+        });
+        document.addEventListener('keydown', function(e) {
+            console.log(`User pressed the ${e.key} key! What's wrong with you? That hurts!`)
+        })
+    </script>
+</body>
+</html>
