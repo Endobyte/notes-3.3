@@ -6,7 +6,7 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <div id="button">
+    <div id="parental">
         <button id="button2">Hover over me and I'll turn aqua!</button>
         <br>
         <button id="button3">Hover over me and I'll become clear!</button>
@@ -17,6 +17,7 @@
     <script>
         const button2 = document.getElementById('button2');
         const input2 = document.getElementById('input2');
+        const parent2 = document.getElementById('parental');
 
         button2.addEventListener('mouseover', function(e) {
             console.log('User is mousing over the aqua button.');
@@ -33,6 +34,9 @@
         document.addEventListener('keydown', function(e) {
             console.log(`User pressed the ${e.key} key! What's wrong with you? That hurts!`)
         })
+        parent2.addEventListener('click', function(e) {
+            console.log('User has clicked on the parent div.');
+        });
     </script>
 </body>
 </html>
