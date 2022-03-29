@@ -51,14 +51,26 @@
         let sideA = +a.value;
         let sideB = +b.value;
         let sideC = +c.value;
-
-        if (checkIsTri(sideA, sideB, sideC)) {
-            ans.textContent = 'Yes, this makes a valid triangle.';
+        ans.classList.remove("hidden");
+        if (!checkIsValid(sideA) || !checkIsValid(sideB) || !checkIsValid(sideC)) {
+            ans.textContent = 'Invalid input(s)';
             return;
         }
-        ans.textContent = 'Inputs do not create a valid triangle.';
+        if (checkIsTri(sideA, sideB, sideC)) {
+            ans.textContent = 'Valid inputs create a valid triangle.';
+            return;
+        }
+        ans.textContent = 'Valid inputs do NOT create a valid triangle.';
     });
-    //LEFT OFF ON SLIDE 38, SECOND PICTURE
+
+    clearButton.addEventListener('click', function(e) {
+        a.value = " ";
+        b.value = " ";
+        c.value = " ";
+        ans.textContent = "";
+        ans.classList.add("hidden");
+    })
+
     function checkIsValid(num) {
         if (isNaN(num)) {
             return false;
