@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Avatar Picker</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        #avatar {
+            border: solid black 1px;
+        }
+        .content {
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h3>Choose your avatar!</h3>
+            <img id="avatar" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" height="150" width="150">
+            <div class="row">
+                <button id="pic1">Luke Skywalker</button>
+                <button id="pic2">Princess Leia</button>
+                <button id="pic3">Han Solo</button>
+                <button id="pic4">Chewbacca</button>
+                <button id="pic5">C-3PO</button>
+                <button id="pic6">R2-D2</button>
+            </div>
+            <br>
+            <button id="clear">RESET</button>
+        </div>
+    </div>
+<script>
+    const avatar = document.getElementById('avatar');
+    const luke = document.getElementById('pic1');
+    const leia = document.getElementById('pic2');
+    const han = document.getElementById('pic3');
+    const chewie = document.getElementById('pic4');
+    const threepio = document.getElementById('pic5');
+    const artoo = document.getElementById('pic6');
+    const reset = document.getElementById('clear');
+
+    luke.addEventListener('click', function(e) {
+        avatar.src = 'https://cdn.quotesgram.com/img/49/73/1757221503-Luke-Skywalker-150x150.jpg';
+    })
+
+    leia.addEventListener('click', function(e) {
+        avatar.src = 'https://www.thewrap.com/wp-content/uploads/2016/12/Princess-Leia-Carrie-Fisher-150x150.jpg';
+    })
+
+    han.addEventListener('click', function(e) {
+        avatar.src = 'https://www.thewrap.com/wp-content/uploads/2017/01/young-han-solo-star-wars-movie-casting-150x150.jpg';
+    })
+
+    chewie.addEventListener('click', function(e) {
+        avatar.src = 'https://411mania.com/wp-content/uploads/2017/01/Chewbacca-150x150.jpg';
+    })
+
+    threepio.addEventListener('click', function(e) {
+        avatar.src = 'https://i.ebayimg.com/images/g/t-oAAOSwBsNbVYb1/s-l1600.jpg';
+    })
+
+    artoo.addEventListener('click', function(e) {
+        avatar.src = 'https://www.thewrap.com/wp-content/uploads/2017/06/r2d2-star-wars-150x150.png';
+    })
+
+    reset.addEventListener('click', function(e) {
+        avatar.src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png';
+    })
+</script>
+</body>
+</html>
