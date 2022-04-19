@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <h3>What is this?</h3>
+        <h4>I don't want this</h4>
+    </div>
+</div>
+<script>
+    const content = document.querySelector('.content');
+    // Replace contents of an HTML tag using innerHTML
+    content.innerHTML = '<h1>I love Zelda</h1><h4>...but Mario is better.</h4>';
+
+    // Add a new element in addition to existing elements
+    const zelda = document.createElement('h1');
+    zelda.innerHTML = 'I love Zelda';
+    content.appendChild(zelda);
+
+    const rickroll = document.createElement('h2');
+    rickroll.innerHTML = 'Never gonna give you up';
+    content.appendChild(rickroll);
+
+    const potato = document.createElement('h3');
+    potato.innerHTML = 'Potato potato.';
+    content.appendChild(potato);
+
+    const tomato = document.createElement('h4');
+    tomato.innerHTML = 'Tomato tomato.';
+    content.appendChild(tomato);
+
+    // Put this at the top in addition to existing elements
+    const food = document.createElement('h1');
+    food.innerHTML = 'I love pizza';
+    content.insertAdjacentElement('afterend', food); // Can utilize beforebegin, afterbegin, beforeend, afterend
+
+    // To remove an element
+    const unwantedElement = document.querySelector('h4'); //.class to remove elements based on class and #id to remove elements based on ID
+    unwantedElement.remove();
+
+</script>
+</body>
+</html>
