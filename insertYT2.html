@@ -2,32 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Groceries</title>
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="container">
     <div class="content">
         <form>
+            <label for="item">Grocery List Item</label>
             <input type="text" id="item" name="item">
             <button type="button">Add Item</button>
-            <ul id="myList"></ul>
+            <ul></ul>
         </form>
     </div>
 </div>
 <script>
-    const myList = document.getElementById('myList');
-    const input = document.getElementById('item');
+    const myList = document.querySelector('ul');
+    const item = document.getElementById('item');
     const button = document.querySelector('button');
     function addItem() {
         let newElement = document.createElement('li');
-        newElement.innerHTML = input.value;
+        newElement.innerHTML = item.value;
         newElement.addEventListener('click', function(e) {
             newElement.remove();
         });
         myList.appendChild(newElement);
+        item.value = "";
     }
-    button.addEventListener('click', addItem());
+    button.addEventListener('click', addItem);
 </script>
 </body>
 </html>
