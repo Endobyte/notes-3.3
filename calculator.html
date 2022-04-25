@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator!</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        .content {
+            width: 600px;
+        }
+        .calculations {
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <!--Creating inputs for numbers and buttons for calculating and clearing; also a div to put equations into-->
+        <div class="row">
+            <label for="num1">Number 1</label>
+            <input type="text" id="num1" name="num1">
+            <label for="num2">Number 2</label>
+            <input type="text" id="num2" name="num2">
+        </div>
+        <div class="row">
+            <button class="calculations" id="add">+</button>
+            <button class="calculations" id="subtract">-</button>
+            <button class="calculations" id="multiply">×</button>
+            <button class="calculations" id="divide">÷</button>
+            <button class="calculations" id="percent">%</button>
+            <button class="calculations" id="power">^</button>
+        </div>
+        <br>
+        <button id="clear">CLEAR</button>
+        <div id="equations"></div>
+    </div>
+</div>
+<script>
+    // Declaring variables related to the inputs, buttons, and storage div
+    let num1 = document.getElementById("num1");
+    let num2 = document.getElementById("num2");
+    let clear = document.getElementById("clear");
+    let add = document.getElementById("add");
+    let subtract = document.getElementById("subtract");
+    let multiply = document.getElementById("multiply");
+    let divide = document.getElementById("divide");
+    let percent = document.getElementById("percent");
+    let power = document.getElementById("power");
+    let equations = document.getElementById("equations");
+
+    // Making the clear button set input values and list of calculations to empty strings
+    clear.addEventListener('click', function(e) {
+        num1.value = "";
+        num2.value = "";
+        equations.innerHTML = "";
+    })
+
+    // Creating a function for addition, subtraction, multiplication, and division to cut down on repeated code; based on what symbol put in as the parameter, the two numbers interact and the final equation is added to the "equations" div; the input boxes are also cleared
+    function doCalculation(operator) {
+        console.log('abcd');
+        let newElement = document.createElement('h4');
+        if (operator === "+") {
+            let ans = Number(num1.value) + Number(num2.value);
+            newElement.innerHTML = `${num1.value} + ${num2.value} = ${ans}`;
+        } else if (operator === "-") {
+            let ans = Number(num1.value) - Number(num2.value);
+            newElement.innerHTML = `${num1.value} - ${num2.value} = ${ans}`;
+        } else if (operator === "*") {
+            let ans = Number(num1.value) * Number(num2.value);
+            newElement.innerHTML = `${num1.value} × ${num2.value} = ${ans}`;
+        } else if (operator === "/") {
+            let ans = Number(num1.value) / Number(num2.value);
+            newElement.innerHTML = `${num1.value} ÷ ${num2.value} = ${ans}`;
+        }
+        equations.insertAdjacentElement('afterbegin', newElement);
+        num1.value = "";
+        num2.value = "";
+    }
+
+    add.addEventListener('click', () => {
+        doCalculation("+");
+    })
+
+    subtract.addEventListener('click', () => {
+        doCalculation("-");
+    })
+
+    multiply.addEventListener('click', () => {
+        doCalculation("*");
+    })
+
+    divide.addEventListener('click', () => {
+        doCalculation("/");
+    })
+
+    // More complicated functions for percentage and exponents as they require slightly different formatting
+    percent.addEventListener('click', function(e) {
+        let ans = (Number(num2.value) / 100) * Number(num1.value);
+        let newElement = document.createElement('h4');
+        newElement.innerHTML = `${num2.value}% of ${num1.value} = ${ans}`;
+        equations.insertAdjacentElement('afterbegin', newElement);
+        num1.value = "";
+        num2.value = "";
+    })
+
+    power.addEventListener('click', function(e) {
+        let ans = Math.pow(Number(num1.value), Number(num2.value));
+        let newElement = document.createElement('h4');
+        newElement.innerHTML = `${num1.value} ^ ${num2.value} = ${ans}`;
+        equations.insertAdjacentElement('afterbegin', newElement);
+        num1.value = "";
+        num2.value = "";
+    })
+</script>
+</body>
+</html>
