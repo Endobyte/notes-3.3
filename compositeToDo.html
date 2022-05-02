@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To Do V2</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <input type="text">
+                <button id="submit">Enter</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Incomplete
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="incomplete">
+
+                </tbody>
+            </table>
+            <p>-------------------------------</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>
+                        Complete
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody id="complete">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+<script>
+    const item = document.querySelector('input');
+    const submitButton = document.getElementById('submit');
+    const incomplete = document.getElementById('incomplete');
+    const complete = document.getElementById('complete');
+
+    submitButton.addEventListener('click', function() {
+        let toDoItem = item.value;
+        addItemToIncompleteTable(toDoItem);
+        item.value = "";
+    })
+
+    function addItemsToTables(toDoItem, x) {
+        let newRow = document.createElement('tr');
+        let descriptionTag = document.createElement('td');
+        descriptionTag.textContent = toDoItem;
+        newRow.appendChild(descriptionTag);
+        let actionTag = document.createElement('td');
+        let action = document.createElement('button');
+        if (x === 'complete') {
+            action.textContent = "Mark Incomplete";
+        } else if (x === 'incomplete') {
+            action.textContent = "Mark Complete";
+        }
+        action.addEventListener('click', function() {
+            newRow.remove();
+            if (x === 'complete') {
+                addItemToIncompleteTable(toDoItem);
+            } else if (x === 'incomplete') {
+                addItemToCompleteTable(toDoItem);
+            }
+        })
+        actionTag.appendChild(action);
+        newRow.appendChild(actionTag);
+        if (x === 'complete') {
+            complete.appendChild(newRow);
+        } else if (x === 'incomplete') {
+            incomplete.appendChild(newRow);
+        }
+    }
+
+    function addItemToIncompleteTable(toDoItem) {
+        addItemsToTables(toDoItem, 'incomplete');
+    }
+
+    function addItemToCompleteTable(toDoItem) {
+        addItemsToTables(toDoItem, 'complete');
+    }
+</script>
+</body>
+</html>
