@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timers Practice</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <style>
+        #colors {
+            width: 200px;
+            padding: 20px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <button id="remove">Click me to get rid of me :(</button>
+            <br>
+            <div id="colors">
+                <button id="colorsbutton">Change colors</button>
+                <button id="anticolors">Stop changing colors</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const removeButton = document.getElementById("remove")
+    const colorsDiv = document.getElementById("colors")
+    const colorsButton = document.getElementById("colorsbutton")
+    const stopColorsButton = document.getElementById("anticolors")
+    const colors = ['green', 'gray', 'blue', 'pink', 'orange']
+    let randomColor;
+    let randomNum;
+    let interval;
+
+    removeButton.addEventListener('click', function() {
+        setTimeout(function() {
+            console.log("I was clicked 3 seconds ago and sent into the shadow realm.")
+            removeButton.remove();
+        }, 3000 );
+    })
+
+    colorsButton.addEventListener('click', function() {
+        if (!interval) {
+            interval = setInterval(function() {
+                randomNum = Math.floor(Math.random() * 5);
+                randomColor = colors[randomNum];
+                colorsDiv.style.backgroundColor = randomColor;
+            }, 5000 );
+        }
+    })
+
+    stopColorsButton.addEventListener('click', function() {
+        if (interval) {
+            clearInterval(interval);
+            interval = null;
+        }
+    })
+</script>
+</body>
+</html>
